@@ -4,26 +4,42 @@ import logging
 import pandas as pd
 from bs4 import BeautifulSoup
 
+def config_log():
+    logging.basicConfig(
+        filename="log.txt",
+        level=logging.INFO,
+        format='%(asctime)s %(levelname)s %(module)s - %(funcName)s: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
 def main():
-    logging.basicConfig(filename="log.txt", level=logging.INFO)
+    config_log()
 
     base_url = "http://quotes.toscrape.com"
     current_page = "/page/1"
     quotes = []
 
     logging.info("Iniciando busca")
+
     while current_page != None:
         logging.info(f"Buscando página {current_page}")
         body = requests.get(f"{base_url}{current_page}").text
+        logging.info(f"Página {current_page} retornada com sucesso")
+
         soup = BeautifulSoup(body, 'lxml')
-        logging.info(f"Buscando frases")
+
+        logging.info(f"Buscando frases e autores")
         raw_quotes = get_quotes(soup)
         logging.info(f"{len(raw_quotes)} frases recuperadas")
+
         quotes += parse_quotes(raw_quotes)
         current_page = next_page(soup)
 
+    logging.info("Convertendo saída para CSV")
     df = quotes_to_df(quotes)
     df_to_csv(df, "output.csv")
+    logging.info("CSV com dados salvo")
+    
     logging.info("Busca finalizada")
 
 
