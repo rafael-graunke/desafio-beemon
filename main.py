@@ -31,17 +31,20 @@ def main():
 
         logging.info(f"Buscando frases e autores")
         raw_quotes = get_quotes(soup)
-        logging.info(f"{len(raw_quotes)} frases recuperadas")
+        logging.info(f"Frases recuperadas: {len(raw_quotes)}")
 
         quotes += parse_quotes(raw_quotes)
         current_page = next_page(soup)
 
+    logging.info("Busca finalizada")
+    logging.info(f"Total de frases: {len(quotes)}")
+
     logging.info("Convertendo saída para CSV")
     df = quotes_to_df(quotes)
-    df_to_csv(df, "data/output.csv")
+    df_to_csv(df, "./data/output.csv")
     logging.info("CSV com dados salvo")
 
-    logging.info("Busca finalizada")
+    
 
 # Busca frases a partir do HTML
 def get_quotes(soup):
