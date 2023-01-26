@@ -2,13 +2,9 @@
 
 Projeto desenvolvido para o desafio da beeMôn.
 
----
-
 ## Pré-Requisitos
 
 - Python >3.9
-
----
 
 ## Instalação
 
@@ -30,17 +26,15 @@ Talvez seja necessário instalar a biblioteca do BeaultifulSoup4 para Python atr
 
 - Arch
 
-      ```
-      sudo pacman -S python-beautifulsoup4
-      ```
+  ```
+  sudo pacman -S python-beautifulsoup4
+  ```
 
 Após feita a instalação das dependências, basta executar o arquivo main.py:
 
 ```
 python main.py
 ```
-
----
 
 ## Saída
 
