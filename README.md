@@ -10,7 +10,7 @@ Projeto desenvolvido para o desafio da beeMôn.
 
 ### Usando Docker
 
-Para executar o projeto utilizando Docker, basta executar o seguinte comando:
+Para executar o projeto utilizando Docker, basta executar os seguintes comandos:
 
 ```
 git clone https://github.com/rafael-graunke/desafio-beemon
@@ -54,7 +54,7 @@ Caso o script esteja sendo executado via Docker, ele estará agendado para execu
 
 ## Saída
 
-O programa gera duas saídas:
+O programa gera três saídas:
 
 - **stdout** : loga as informações da execução do script, incluindo data e hora. Caso o projeto esteja sendo executado via Docker, basca utilizar `docker logs <container>` para visualizar o log de execução.
 
