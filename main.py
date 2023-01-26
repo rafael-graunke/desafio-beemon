@@ -4,6 +4,7 @@ import logging
 import pandas as pd
 from bs4 import BeautifulSoup
 
+# Executa configuracao base do 'logging'
 def config_log():
     logging.basicConfig(
         level=logging.INFO,
@@ -11,6 +12,7 @@ def config_log():
         datefmt='%Y-%m-%d %H:%M:%S'
     )
 
+# Loop principal de execução
 def main():
     config_log()
 
@@ -41,10 +43,11 @@ def main():
 
     logging.info("Busca finalizada")
 
-
+# Busca frases a partir do HTML
 def get_quotes(soup):
     return soup.find_all("div", {"class": "quote"})
 
+# Converte as tags do soup para o formato desejado em lista
 def parse_quotes(raw_quotes):
     parsed_quotes = []
 
@@ -55,15 +58,19 @@ def parse_quotes(raw_quotes):
 
     return parsed_quotes
 
+# Converte a lista de frases em um dataframe Pandas
 def quotes_to_df(quotes):
     return pd.DataFrame(quotes, columns=["text", "author"])
 
+# Busca o link da praxima pagina
 def next_page(soup):
     next_button = soup.find("li", {"class": "next"})
     return next_button.a["href"] if next_button != None else None
 
+# Salva um dataframe como CSV
 def df_to_csv(df, path):
     with open(path, "w") as file:
         df.to_csv(file)
 
-main()
+if __name__ == "__main__":
+    main()
