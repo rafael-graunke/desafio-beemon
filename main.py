@@ -1,3 +1,4 @@
+import os
 import requests
 import csv
 import logging
@@ -42,7 +43,8 @@ def main():
 
     logging.info("Convertendo saída para CSV")
     df = quotes_to_df(quotes)
-    df_to_csv(df, "./data/output.csv")
+    dirname = os.path.dirname(__file__)
+    df_to_csv(df, os.path.join(dirname, 'data', 'output.csv'))
     logging.info("CSV com dados salvo")
 
     logging.info("Salvando frases no banco de dados")

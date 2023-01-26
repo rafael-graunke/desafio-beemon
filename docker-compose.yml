@@ -6,4 +6,4 @@ services:
     volumes:
       - type: bind
         source: ./data
-        target: /usr/src/app/data
+        target: /app/data
