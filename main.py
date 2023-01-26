@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 
 def config_log():
     logging.basicConfig(
-        filename="log.txt",
         level=logging.INFO,
         format='%(asctime)s %(levelname)s %(module)s - %(funcName)s: %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
@@ -37,9 +36,9 @@ def main():
 
     logging.info("Convertendo saída para CSV")
     df = quotes_to_df(quotes)
-    df_to_csv(df, "output.csv")
+    df_to_csv(df, "data/output.csv")
     logging.info("CSV com dados salvo")
-    
+
     logging.info("Busca finalizada")
 
 
