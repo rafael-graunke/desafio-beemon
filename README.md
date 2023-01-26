@@ -13,6 +13,8 @@ Projeto desenvolvido para o desafio da beeMôn.
 Para executar o projeto utilizando Docker, basta executar o seguinte comando:
 
 ```
+git clone https://github.com/rafael-graunke/desafio-beemon
+cd desafio-beemon
 docker-compose up -d
 ```
 
