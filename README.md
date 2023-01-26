@@ -8,6 +8,14 @@ Projeto desenvolvido para o desafio da beeMôn.
 
 ## Instalação
 
+### Usando Docker
+
+Para executar o projeto utilizando Docker, basta executar o seguinte comando:
+
+```
+docker-compose up -d
+```
+
 ### Sem Docker
 
 Para executar o projeto basta clonar esse repositório e instalar as dependências do mesmo:
@@ -38,13 +46,9 @@ Após feita a instalação das dependências, basta executar o arquivo main.py:
 python main.py
 ```
 
-### Usando Docker
+## Agendamento
 
-Para executar o projeto utilizando Docker, basta executar o seguinte comando:
-
-```
-docker-compose up -d
-```
+Caso o script esteja sendo executado via Docker, ele estará agendado para executar conforme o arquivo `crontab`, presente na raiz do projeto. Basta alterar o agendamento, conforme padrão do `crontab`. Depois, remover a imagem antiga com `docker image rm <nome_imagem>` e subir o projeto novamente com `docker-compose up -d`.
 
 ## Saída
 
