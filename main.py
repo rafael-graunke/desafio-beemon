@@ -3,6 +3,7 @@ import csv
 import logging
 import pandas as pd
 from bs4 import BeautifulSoup
+from database import db
 
 # Executa configuracao base do 'logging'
 def config_log():
@@ -44,6 +45,10 @@ def main():
     df_to_csv(df, "./data/output.csv")
     logging.info("CSV com dados salvo")
 
+    logging.info("Salvando frases no banco de dados")
+    quotes_to_sqlite(quotes)
+    logging.info("Frases salvas com sucesso")
+
 # Busca frases a partir do HTML
 def get_quotes(soup):
     return soup.find_all("div", {"class": "quote"})
@@ -74,6 +79,11 @@ def next_page(soup):
 def df_to_csv(df, path):
     with open(path, "w") as file:
         df.to_csv(file)
+
+# Executa query adicionando as frases e autores no banco SQLite
+def quotes_to_sqlite(quotes):
+    for quote in quotes:
+        db.add_quote(text=quote[0], author_name=quote[1])
 
 if __name__ == "__main__":
     main()
