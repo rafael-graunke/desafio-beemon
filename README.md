@@ -8,6 +8,8 @@ Projeto desenvolvido para o desafio da beeMôn.
 
 ## Instalação
 
+### Sem Docker
+
 Para executar o projeto basta clonar esse repositório e instalar as dependências do mesmo:
 
 ```
@@ -36,10 +38,18 @@ Após feita a instalação das dependências, basta executar o arquivo main.py:
 python main.py
 ```
 
+### Usando Docker
+
+Para executar o projeto utilizando Docker, basta executar o seguinte comando:
+
+```
+docker-compose up -d
+```
+
 ## Saída
 
-O programa gera dois arquivos:
+O programa gera duas saídas:
 
-- **log.txt** : loga as informações da execução do script, incluindo data e hora.
+- **stdout** : loga as informações da execução do script, incluindo data e hora. Caso o projeto esteja sendo executado via Docker, basca utilizar `docker logs <container>` para visualizar o log de execução.
 
-- **output.csv** : contém a saída dos dados extraídos no formato CSV.
+- **data/output.csv** : contém a saída dos dados extraídos no formato CSV.
