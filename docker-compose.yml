@@ -1,0 +1,9 @@
+version: "1.0"
+services:
+  backend:
+    build:
+      context: ./
+    volumes:
+      - type: bind
+        source: ./data
+        target: /usr/src/app/data
