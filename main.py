@@ -44,8 +44,6 @@ def main():
     df_to_csv(df, "./data/output.csv")
     logging.info("CSV com dados salvo")
 
-    
-
 # Busca frases a partir do HTML
 def get_quotes(soup):
     return soup.find_all("div", {"class": "quote"})
@@ -56,6 +54,8 @@ def parse_quotes(raw_quotes):
 
     for quote in raw_quotes:        
         text = quote.find("span", {"class": "text"}).get_text()
+        text = text.strip('\u201c')
+        text = text.strip('\u201d')
         author = quote.find("small", {"class": "author"}).get_text()
         parsed_quotes.append([text, author])
 
